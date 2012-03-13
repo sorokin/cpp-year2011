@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Задание №1</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style type="text/css">
+      .codeblock
+      {
+        background: #e0e0e0;
+        border: solid 1px black;
+        padding: 5px;
+        font-family: monospace;
+      }
+      .codein
+      {
+        font-family: monospace;
+      }
+    td.numbers {text-align: right;}
+    td.names {text-align: left;}
+    td {text-align: center;}
+    tr.odd {background-color: #e0e0e0;}
+    </style>
+  </head>
+  <body>
+    <h2>Задание №1</h2>
+    <p>В данном задании необходимо написать на ассемблере программу (словарь). Ей на вход дается набор ключей-значений, разделенных пробелами:</p>
+    <div class="codeblock">
+    key1 value1<br/>
+    key2 value2<br/>
+    key3 value3
+    </div>
+    <p>Затем после перевода строки, на каждой строке вводится ключ, для которого программа должна вывести соответствующее ему значение. Например:</p>
+    <div class="codeblock">
+    cat chat<br/>
+    dog chien<br/>
+    mouse souris<br/>
+    <br/>
+    dog<br/>
+    chien<br/>
+    cat<br/>
+    chat<br/>
+    </div>
+    <p>Если в качестве ключа передана пустая строка, программа завершается.</p>
+
+    <p>В зависимости от варианта, в качестве структур данных для словаря следует использовать либо хеш-таблицу, либо отсортированный массив,
+    по которому делается бинарный поиск.</p>
+
+    <table border="1" cellpadding="3" cellspacing="0">
+      <tr><td>Вариант</td>
+      <td>Описание</td></tr>
+      <tr class="odd">
+      <td class="numbers">1</td>
+      <td>Хеш-таблица</td></tr>
+      <tr>
+      <td class="numbers">2</td>
+      <td>Быстрая сортировка + бинарный поиск</td></tr>
+      <tr class="odd">
+      <td class="numbers">3</td>
+      <td>Heapsort + бинарный поиск</td></tr>
+      <tr>
+      <td class="numbers">4</td>
+      <td>Сортировка слиянием + бинарный поиск</td></tr>
+    </table>
+
+    <p>Номер своего вариант можно вычислить по формуле <span class="codein">(N - 1) % 4 + 1</span>, где <span class="codein">N</span> &mdash; ваш
+    номер в списке вашей группы на <a href="index.html">странице курса</a>.</p>
+
+    <p>В архиве <a href="http://rain.ifmo.ru/~sorokin/asm/asm-task-1.zip">asm-task-1.zip</a> лежит ассемблер (fasm), текстовый редактор (fasmd), отладчик (td), а
+    также пример программы делающей сложение длинных чисел. Пример можно использовать чтобы посмотреть как сделать ввод/вывод.</p>
+
+    <p>По желанию можно использовать любой другой ассемблер (nasm, masm, yasm, gas). Также можно писать не 16-битный код, а 32- или 64-битный.</p>
+
+    <p>
+      <a href="http://validator.w3.org/check?uri=referer">
+        <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+      </a>
+    </p>
+  </body>
+</html>
+
