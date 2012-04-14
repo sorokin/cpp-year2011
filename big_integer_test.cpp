@@ -167,11 +167,16 @@ BOOST_AUTO_TEST_CASE(div_)
 {
     big_integer a = 20;
     big_integer b = 5;
+    big_integer c = 20;
 
     BOOST_CHECK(a / b == 4);
+    BOOST_CHECK(a % b == 0);
 
     a /= b;
     BOOST_CHECK(a == 4);
+
+    c %= b;
+    BOOST_CHECK(c == 0);
 }
 
 BOOST_AUTO_TEST_CASE(div_signed)
@@ -180,6 +185,7 @@ BOOST_AUTO_TEST_CASE(div_signed)
     big_integer b = 5;
 
     BOOST_CHECK(a / b == -4);
+    BOOST_CHECK(a % b == 0);
 }
 
 BOOST_AUTO_TEST_CASE(div_rounding)
@@ -188,6 +194,7 @@ BOOST_AUTO_TEST_CASE(div_rounding)
     big_integer b = 5;
 
     BOOST_CHECK(a / b == 4);
+    BOOST_CHECK(a % b == 3);
 }
 
 BOOST_AUTO_TEST_CASE(div_rounding_negative)
@@ -199,6 +206,19 @@ BOOST_AUTO_TEST_CASE(div_rounding_negative)
 
     BOOST_CHECK(a / b == -4);
     BOOST_CHECK(c / d == -4);
+    BOOST_CHECK(a % b == 3);
+    BOOST_CHECK(c % d == -3);
+}
+
+BOOST_AUTO_TEST_CASE(unary_plus)
+{
+    big_integer a = 123;
+    big_integer b = +a;
+
+    BOOST_CHECK(a == b);
+
+    // this code should not compile:
+    // &+a;
 }
 
 BOOST_AUTO_TEST_CASE(unary_minus)

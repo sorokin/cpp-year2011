@@ -1,1 +1,1 @@
-scp *.html *.cpp sorokin@rain.ifmo.ru:public_html/cpp/
+scp *.html *.cpp *.h sorokin@rain.ifmo.ru:public_html/cpp/
