@@ -109,12 +109,41 @@
       <li>специализация, частичная специализация</li>
       <li>type_traits'ы</li>
     </ul>
+    <h3>Лекция 10 (21 апреля 2012)</h3>
+    <ul>
+       <li>Контейнеры STL
+         <ul>
+           <li>Sequences: vector, list, deque</li>
+           <li>Associative Containers: [unordered][_multi]{set/map}</li>
+         </ul>
+       </li>
+       <li>Итераторы, категории итераторов (Input, Output, Forward, Bidirectional, Random Access)</li>
+       <li>Примеры алгоритмов
+         <ul>
+           <li>find, find_if, search</li>
+           <li>remove, remove_if, прием с erase/remove_if</li>
+           <li>sort, stable_sort, partial_sort, nth_element</li>
+         </ul>
+       </li>
+       <li>Много разговоров на тему того, что хоть явных ограничений на параметры шаблона нет, это не означает
+       что их нет совсем.
+         <ul>
+           <li>копируемость/присваиваемость</li>
+           <li>требования к operator==</li>
+           <li>требования к operator&lt;</li>
+           <li>согласованность operator== и operator&lt;</li>
+         </ul>
+       </li>
+    </ul>
     <h3>TODO</h3>
     <ul>
       <li>разница между операторами внутри класса и снаружи (неявное приведение типов)</li>
       <li>safe-bool</li>
-      <li>использование type_traits: SFINAE, tag-dispatching</li>
+      <li>использование type_traits: SFINAE, tag-dispatching на примере STL</li>
       <li>two-phase name lookup</li>
+      <li>STL: back-inserter, lower_bound, heap_*, priority_queue</li>
+      <li>const на примере STL</li>
+      <li>Concepts</li>
     </ul>
     <h3>Задания</h3>
     <p>Задания высылаются на <script type="text/javascript">var mp1 = "vanyacpp";
@@ -129,25 +158,56 @@ document.write("\x3ca href=" + "mail" + "to:" + mp1 +
     </ul>
     <h3>Что почитать?</h3>
     <ul>
-      <li>любая книжка по ассемблеру, например,
-      <a href="http://www.google.ru/search?ie=UTF-8&amp;q=%D0%B7%D1%83%D0%B1%D0%BA%D0%BE%D0%B2+%D0%B0%D1%81%D1%81%D0%B5%D0%BC%D0%B1%D0%BB%D0%B5%D1%80">Зубков</a> или
-      <a href="http://www.google.ru/search?ie=UTF-8&amp;q=%D1%80%D1%83%D0%B4%D0%B0%D0%BA%D0%BE%D0%B2+%D1%84%D0%B8%D0%BD%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D0%B2">Рудаков, Финогенов</a>.
+      <li>
+        Low-level
+        <ul>
+          <li>любая книжка по ассемблеру, например,
+          <a href="http://www.google.ru/search?ie=UTF-8&amp;q=%D0%B7%D1%83%D0%B1%D0%BA%D0%BE%D0%B2+%D0%B0%D1%81%D1%81%D0%B5%D0%BC%D0%B1%D0%BB%D0%B5%D1%80">Зубков</a> или
+          <a href="http://www.google.ru/search?ie=UTF-8&amp;q=%D1%80%D1%83%D0%B4%D0%B0%D0%BA%D0%BE%D0%B2+%D1%84%D0%B8%D0%BD%D0%BE%D0%B3%D0%B5%D0%BD%D0%BE%D0%B2">Рудаков, Финогенов</a>.
+          </li>
+          <li><a href="http://people.redhat.com/drepper/cpumemory.pdf">Ulrich Drepper &mdash; What Every Programmer Should Know About Memory</a></li>
+        </ul>
       </li>
-      <li><a href="http://people.redhat.com/drepper/cpumemory.pdf">Ulrich Drepper &mdash; What Every Programmer Should Know About Memory</a></li>
-      <li>Brian Kernighan, Dennis Ritchie &mdash; The C Programming Language</li>
-      <li>Bjarne Stroustrup &mdash; The C++ Programming Language</li>
-      <li>Bjarne Stroustrup &mdash; Programming: Principles and Practice using C++</li>
-      <li>Bjarne Stroustrup &mdash; The Design and Evolution of C++</li>
-      <li>Herb Sutter, Andrei Alexandrescu &mdash; C++ Coding Standards: 101 Rules, Guidelines, and Best Practices</li>
-      <li>Herb Sutter &mdash; Exceptional C++</li>
-      <li>Herb Sutter &mdash; More Exceptional C++</li>
-      <li>Andrei Alexandrescu &mdash; Modern C++ Design</li>
-      <li>Scott Mayers &mdash; Effective C++</li>
-      <li>Scott Mayers &mdash; More Effective C++</li>
-      <li>Scott Mayers &mdash; Effective STL</li>
-      <li>Andrew Koenig, Barbara Moo &mdash; Accelerated C++</li>
-      <li>Stephen Dewhurst &mdash; C++ Common Knowledge: Essential Intermediate Programming</li>
-      <li>Stephen Dewhurst &mdash; C++ Gotchas</li>
+      <li>
+        Basic
+        <ul>
+          <li>Brian Kernighan, Dennis Ritchie &mdash; The C Programming Language</li>
+          <li>Andrew Koenig, Barbara Moo &mdash; Accelerated C++</li>
+          <li>Bjarne Stroustrup &mdash; Programming: Principles and Practice using C++</li>
+        </ul>
+      </li>
+      <li>
+        In-Depth
+        <ul>
+          <li>Herb Sutter, Andrei Alexandrescu &mdash; C++ Coding Standards: 101 Rules, Guidelines, and Best Practices</li>
+          <li>Herb Sutter &mdash; Exceptional C++</li>
+          <li>Herb Sutter &mdash; More Exceptional C++</li>
+          <li>Andrei Alexandrescu &mdash; Modern C++ Design</li>
+          <li>Scott Mayers &mdash; Effective C++</li>
+          <li>Scott Mayers &mdash; More Effective C++</li>
+          <li>Scott Mayers &mdash; Effective STL</li>
+          <li>Stephen Dewhurst &mdash; C++ Common Knowledge: Essential Intermediate Programming</li>
+          <li>Stephen Dewhurst &mdash; C++ Gotchas</li>
+          <li>Bjarne Stroustrup &mdash; The C++ Programming Language</li>
+        </ul>
+      </li>
+      <li>
+        Stepanov
+        <ul>
+          <li><a href="http://www.stepanovpapers.com/notes.pdf">Alexander Stepanov &mdash; Notes on Programming</a></li>
+          <li>Alexander Stepanov, Paul McJones &mdash; Elements of Programming</li>
+          <li>Alexander Stepanov &mdash; Наибольшая общая мера последнии 2500 лет, лекция в Яндексе
+          (<a href="http://video.yandex.ru/users/ya-events/view/129/">часть1</a>,
+           <a href="http://video.yandex.ru/users/ya-events/view/128/">часть2</a>)</li>
+        </ul>
+      </li>
+      <li>
+        Rationale
+        <ul>
+          <li>Bjarne Stroustrup &mdash; The Design and Evolution of C++</li>
+          <li><a href="http://www.open-std.org/jtc1/sc22/wg14/www/C99RationaleV5.10.pdf">Rationale for Programming Language C</a></li>
+        </ul>
+      </li>
     </ul>
     <h3>Списки групп</h3>
     <h4>1537</h4>
