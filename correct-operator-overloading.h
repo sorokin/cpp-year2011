@@ -24,6 +24,12 @@ struct big_integer
     big_integer operator+() const;
     big_integer operator-() const;
     big_integer operator~() const;
+
+    big_integer& operator++();
+    big_integer operator++(int);
+
+    big_integer& operator--();
+    big_integer operator--(int);
 };
 
 big_integer operator+(big_integer const& a, big_integer const& b);
