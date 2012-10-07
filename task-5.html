@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Задание №5</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style type="text/css">
+      .codeblock
+      {
+        background: #e0e0e0;
+        border: solid 1px black;
+        padding: 5px;
+        font-family: monospace;
+      }
+      .codein
+      {
+        font-family: monospace;
+      }
+    td.numbers {text-align: right;}
+    td.names {text-align: left;}
+    td {text-align: center;}
+    tr.odd {background-color: #e0e0e0;}
+    </style>
+  </head>
+  <body>
+    <h2>Задание №5</h2>
+    <h3>Вариант №1</h3>
+    <p>Необходимо написать текстовый чат.</p>
+    <p>Достаточно поддерживать чат на одну комнату. Личные сообщения/большое количество комнат не нужно.</p>
+    <p>Требования к протоколу:</p>
+    <ul>
+      <li>отсутствие выделенного сервера</li>
+      <li>если отсутствует прямое соединение между двумя пирами, но есть третий с которым они оба соединены, они всё равно должны иметь возможность общаться (каждый клиент при необходимости может стать релеем)</li>
+      <li>local peer discovery (пиры должны находить друг-друга в локальной сети)</li>
+      <li>peer exchange (пиры должны иметь возможность обмениваться списками известных им пиров)</li>
+    </ul>
+    <p>Все, кто реализуют данный вариант, должны договориться о едином протоколе, чтобы программы всех могли общаться со всеми.</p>
+    <p>Требуемые фичи клиентов:</p>
+    <ul>
+      <li>отображать список известных ему пиров со текущим статусом (статус пира, это что-то вроде "подключен/не подключен", зависит от выбранного протокола. Предполагается использовать это для отладки)</li>
+      <li>иметь возможность отключать local peer discovery</li>
+      <li>(возможно что-то ещё, зависящее от протокола, что может пригодиться при отладке)</li>
+    </ul>
+    <h3>Вариант №2</h3>
+    <p>Визуализатор топологии сети.</p>
+    <p>Программа должна находить в локальной сети запущенные клиенты чата из варианта №1, запрашивать у них через peer exchange с кем они соединены
+    и отображать это в виде графа. Предполагается, что для рисования графа будет использован какой-то красивый алгоритм укладки графа (а не просто
+    вершины по кругу раскидаете). Визуализатор должен периодически опрашивать известные ему пиры и перерисовывать граф если что-то поменялось.</p>
+    <h3>Вариант №3</h3>
+    <p>Voice-чат. Достаточно поддерживать чат на одну комнату. Личные сообщения/большое количество комнат не нужно.</p>
+    <p>Требования к протоколу:</p>
+    <ul>
+      <li>отсутствие выделенного сервера</li>
+    </ul>
+    <p>Все, кто реализуют данный вариант, должны договориться о едином протоколе, чтобы программы всех могли общаться со всеми.</p>
+    <p>Я выдам простую обертку и демку для ввода/вывода и для кодирования/декодирования звука, чтобы вам не нужно было заморачиваться с особенностями ALSA и speex.
+    Я готов написать обертку поддерживающую Linux. Я не уверен, что хочу писать тоже самое для Windows. В любом случае при желании вы можете написать ввод/вывод звука сами.
+    </p>
+    <h3>Библиотеки</h3>
+    <p>Библиотеки для работы с сетью. Я могу посоветовать выбрать либо QtNetwork, либо Boost.Asio, вроде что-то есть у Poco, но я не пробывал.</p>
+    <ul>
+      <li><a href="http://doc.qt.digia.com/4.7-snapshot/qtnetwork.html">QtNetwork</a> (наверно самое простое, что можно найти), конкретно нас интересуют классы
+      <a href="http://doc.qt.digia.com/main-snapshot/qudpsocket.html">QUdpSocket</a>, <a href="http://doc.qt.digia.com/4.7-snapshot/qtcpserver.html">QTcpServer</a>,
+      <a href="http://doc.qt.digia.com/4.7-snapshot/qtcpsocket.html">QTcpSocket</a>. Примеры можно посмотреть здесь:
+      <a href="http://doc.qt.digia.com/4.7-snapshot/examples-network.html">Network Examples</a>, конкретно нас интересует
+      <a href="http://doc.qt.digia.com/4.7-snapshot/network-broadcastreceiver.html">Broadcast Receiver</a> и
+      <a href="http://doc.qt.digia.com/4.7-snapshot/network-broadcastsender.html">Broadcast Sender</a> и, возможно,
+      <a href="http://doc.qt.digia.com/4.7-snapshot/network-network-chat.html">Network Chat</a></li>
+      <li><a href="http://www.boost.org/doc/libs/1_51_0/doc/html/boost_asio.html">Boost.Asio</a>. Тяжело читать их документацию. Советую начать
+      с <a href="http://www.boost.org/doc/libs/1_51_0/doc/html/boost_asio/tutorial.html">Tutorial</a>, а потом
+      посмотреть <a href="http://www.boost.org/doc/libs/1_51_0/doc/html/boost_asio/examples.html">Examples</a>, нам будут интересны примеры в разделе <a href="http://www.boost.org/doc/libs/1_51_0/doc/html/boost_asio/examples.html#boost_asio.examples.echo">Echo</a>
+      и <a href="http://www.boost.org/doc/libs/1_51_0/doc/html/boost_asio/examples.html#boost_asio.examples.chat">Chat</a>.</li>
+      <li><a href="http://pocoproject.org/documentation/index.html">Poco</a>. Можно почитать их презентацию, про networking: <a href="http://pocoproject.org/slides/200-Network.pdf">Network Programming</a></li>
+    </ul>
+    <p>Для GUI можно использовать QtGui, либо GTK+, последний имеет страшненькую оберточку gtkmm.</p>
+    <ul>
+       <li><a href="http://doc.qt.digia.com/4.7-snapshot/qtgui.html">QtGui</a>, пример можно взять тот же самый <a href="http://doc.qt.digia.com/4.7-snapshot/network-network-chat.html">Network Chat</a>.</li>
+    </ul>
+    <p>Если вам понадобиться многопоточность, можно использовать средства Qt, либо средства стандартной библиотеки.</p>
+    <ul>
+       <li><a href="http://doc.qt.digia.com/4.7-snapshot/qthread.html">QThread</a></li>
+       <li><a href="http://en.cppreference.com/w/cpp/thread/thread">std::thread</a></li>
+    </ul>
+    <p>Ввод/вывод звука</p>
+    <ul>
+       <li>ALSA (Linux) (<a href="http://www.alsa-project.org/alsa-doc/alsa-lib/index.html">ужасная документация</a>)</li>
+       <li><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd316775(v=vs.85).aspx">WASAPI</a>, XAudio2, DirectSound (Windows)</li>
+    </ul>
+    <p>Кодирование/декодирование звука</p>
+    <ul>
+       <li>Speex (<a href="http://www.speex.org/docs/api/speex-api-reference/">ужасная документация</a>)</li>
+    </ul>
+    <p>Чтобы установить Qt, нужно скачала скачать его с сайта <a href="http://qt-project.org/downloads">qt-project</a>. Qt SDK это IDE Qt Creator плюс сама библиотека Qt.
+    Qt Creator имеют встренные дизайнеры формочек, справку и т.п. по Qt. Есть версия Qt Creator под Linux. Если вы хотите использовать Qt совместно со студией вам нужно
+    скачать Qt Library для вашей версии студии. После установки Qt советую посмотреть демки (программа называется qtdemo), там есть разные интересные примеры.</p>
+    <p>
+      <a href="http://validator.w3.org/check?uri=referer">
+        <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" />
+      </a>
+    </p>
+  </body>
+</html>
+
